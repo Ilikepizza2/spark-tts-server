@@ -5,8 +5,8 @@
     <p>
     An official PyTorch code for inference of <br>
     <b><em>Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens</em> (Supports MacOS and includes an http server with streaming)</b>
+        <br/>
     <b>Original repository is here: https://github.com/SparkAudio/Spark-TTS/</b>
-    <b>Note: If you want to use this not on MacOS but on CUDA enabled devices, replace `torch.device(f"cpu")` by `torch.device(f"cuda:{device}")` in inference.py and SparkTTS.py and webui.py and api-server.py </b>
     </p>
     <p>
     <img src="src/logo/SparkTTS.jpg" alt="Spark-TTS Logo" style="width: 200px; height: 200px;">
@@ -34,7 +34,7 @@
 
 
 ## Spark-TTS 🔥
-
+<b>Note: If you want to use this not on MacOS but on CUDA enabled devices, replace `torch.device(f"cpu")` by `torch.device(f"cuda:{device}")` in inference.py and SparkTTS.py and webui.py and api-server.py </b>
 ### Overview
 
 Spark-TTS is an advanced text-to-speech system that uses the power of large language models (LLM) for highly accurate and natural-sounding voice synthesis. It is designed to be efficient, flexible, and powerful for both research and production use.
@@ -117,6 +117,7 @@ Run the server by running this in spark-tts-server/Spark-TTS
 ```sh
 python api-server.py
 ```
+visit the api reference at http://localhost:8000/docs
 
 Alternatively, you can directly execute the following command in the command line to perform inference：
 
