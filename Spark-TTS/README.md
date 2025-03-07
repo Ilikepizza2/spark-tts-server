@@ -131,7 +131,7 @@ python -m cli.inference \
     --prompt_speech_path "path/to/prompt_audio"
 ```
 
-**Run the frontend
+**Run the frontend**
 ```sh
 cd frontend/spark-tts-frontend
 npm i
