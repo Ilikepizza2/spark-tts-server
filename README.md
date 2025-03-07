@@ -9,17 +9,17 @@
     <b>Original repository is here: https://github.com/SparkAudio/Spark-TTS/</b>
     </p>
     <p>
-    <img src="src/logo/SparkTTS.jpg" alt="Spark-TTS Logo" style="width: 200px; height: 200px;">
+    <img src="Spark-TTS/src/logo/SparkTTS.jpg" alt="Spark-TTS Logo" style="width: 200px; height: 200px;">
     </p>
         <p>
-        <img src="src/logo/HKUST.jpg" alt="Institution 1" style="width: 200px; height: 60px;">
-        <img src="src/logo/mobvoi.jpg" alt="Institution 2" style="width: 200px; height: 60px;">
-        <img src="src/logo/SJU.jpg" alt="Institution 3" style="width: 200px; height: 60px;">
+        <img src="Spark-TTS/src/logo/HKUST.jpg" alt="Institution 1" style="width: 200px; height: 60px;">
+        <img src="Spark-TTS/src/logo/mobvoi.jpg" alt="Institution 2" style="width: 200px; height: 60px;">
+        <img src="Spark-TTS/src/logo/SJU.jpg" alt="Institution 3" style="width: 200px; height: 60px;">
     </p>
     <p>
-        <img src="src/logo/NTU.jpg" alt="Institution 4" style="width: 200px; height: 60px;">
-        <img src="src/logo/NPU.jpg" alt="Institution 5" style="width: 200px; height: 60px;">
-        <img src="src/logo/SparkAudio2.jpg" alt="Institution 6" style="width: 200px; height: 60px;">
+        <img src="Spark-TTS/src/logo/NTU.jpg" alt="Institution 4" style="width: 200px; height: 60px;">
+        <img src="Spark-TTS/src/logo/NPU.jpg" alt="Institution 5" style="width: 200px; height: 60px;">
+        <img src="Spark-TTS/src/logo/SparkAudio2.jpg" alt="Institution 6" style="width: 200px; height: 60px;">
     </p>
     <p>
     </p>
@@ -42,7 +42,7 @@ Spark-TTS is an advanced text-to-speech system that uses the power of large lang
 ### Changes from the original repository
 Just added support for MacOS out of the box and added a api server plus an interactive frontend so that it is clear on how to use it to develop apps. Added support for mp3/m4a/wav audio. Plus a streaming and non streaming server.
 
-<img src="src/figures/frontend.png" alt="frontend.jpg"></img>
+<img src="Spark-TTS/src/figures/frontend.png" alt="frontend.jpg"></img>
 
 ### Key Features
 
@@ -55,10 +55,10 @@ Just added support for MacOS out of the box and added a api server plus an inter
 
 <table align="center">
   <tr>
-    <td align="center"><b>Inference Overview of Voice Cloning</b><br><img src="src/figures/infer_voice_cloning.png" width="80%" /></td>
+    <td align="center"><b>Inference Overview of Voice Cloning</b><br><img src="Spark-TTS/src/figures/infer_voice_cloning.png" width="80%" /></td>
   </tr>
   <tr>
-    <td align="center"><b>Inference Overview of Controlled Generation</b><br><img src="src/figures/infer_control.png" width="80%" /></td>
+    <td align="center"><b>Inference Overview of Controlled Generation</b><br><img src="Spark-TTS/src/figures/infer_control.png" width="80%" /></td>
   </tr>
 </table>
 
@@ -113,11 +113,11 @@ cd example
 bash infer.sh
 ```
 
-Run the openai-supported server by running this in spark-tts-server/Spark-TTS
+## Run the openai-supported server by running this in spark-tts-server/Spark-TTS
 ```sh
 python api-server.py
 ```
-> For voice creation,
+### For voice creation,
   ```python
   from openai import OpenAI
 
@@ -150,7 +150,7 @@ python api-server.py
       f.write(base64.b64decode(response.choices[0].message.audio.data))
 ```
 
-> for voice cloning
+### for voice cloning
   ```python
   from openai import OpenAI
   import base64
@@ -216,7 +216,7 @@ You can start the UI interface by running `python webui.py --device 0`, which al
 
 | **Voice Cloning** | **Voice Creation** |
 |:-------------------:|:-------------------:|
-| ![Image 1](src/figures/gradio_TTS.png) | ![Image 2](src/figures/gradio_control.png) |
+| ![Image 1](Spark-TTS/src/figures/gradio_TTS.png) | ![Image 2](Spark-TTS/src/figures/gradio_control.png) |
 
 
 **Optional Methods**
