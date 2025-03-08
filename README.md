@@ -113,11 +113,82 @@ cd example
 bash infer.sh
 ```
 
-Run the server by running this in spark-tts-server/Spark-TTS
+## Run the openai-supported server by running this in spark-tts-server/Spark-TTS
 ```sh
 python api-server.py
 ```
-visit the api reference at http://localhost:8000/docs
+### For voice creation,
+  ```python
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url="http://localhost:8000/v1",
+      api_key="dummy-key"
+  )
+
+  # Voice creation with predefined voices
+  response = client.chat.completions.create(
+      model="spark-tts",
+      modalities=["text", "audio"],
+      audio={
+          "voice": "alloy",  # Required: alloy, echo, fable, onyx, nova, shimmer
+          "format": "wav",
+          "pitch": 3,  # Optional: 1-5
+          "speed": 3   # Optional: 1-5
+      },
+      messages=[
+          {
+              "role": "user",
+              "content": "This is the text to be converted to speech with a male voice."
+          }
+      ]
+  )
+
+  # Save the audio
+  import base64
+  with open("output.wav", "wb") as f:
+      f.write(base64.b64decode(response.choices[0].message.audio.data))
+```
+
+### for voice cloning
+  ```python
+  from openai import OpenAI
+  import base64
+
+  client = OpenAI(
+      base_url="http://localhost:8000/v1",
+      api_key="dummy-key"
+  )
+
+  # Read reference audio
+  with open("reference_voice.wav", "rb") as f:
+      audio_data = base64.b64encode(f.read()).decode('utf-8')
+
+  # Voice cloning with reference audio
+  response = client.chat.completions.create(
+      model="spark-tts",
+      modalities=["text", "audio"],
+      audio={
+          "voice": "clone",  # Set to "clone" to indicate voice cloning
+          "format": "wav",
+          "pitch": 3,  # Optional
+          "speed": 3   # Optional
+      },
+      messages=[
+          {
+              "role": "user",
+              "content": [
+                  {"type": "text", "text": "This is the text to be converted using the cloned voice."},
+                  {"type": "input_audio", "input_audio": {"data": audio_data, "format": "wav"}}
+              ]
+          }
+      ]
+  )
+
+  # Save the audio
+  with open("cloned_output.wav", "wb") as f:
+      f.write(base64.b64decode(response.choices[0].message.audio.data))
+  ```
 
 Alternatively, you can directly execute the following command in the command line to perform inference：
 
@@ -145,7 +216,7 @@ You can start the UI interface by running `python webui.py --device 0`, which al
 
 | **Voice Cloning** | **Voice Creation** |
 |:-------------------:|:-------------------:|
-| ![Image 1](src/figures/gradio_TTS.png) | ![Image 2](src/figures/gradio_control.png) |
+| ![Image 1](Spark-TTS/src/figures/gradio_TTS.png) | ![Image 2](Spark-TTS/src/figures/gradio_control.png) |
 
 
 **Optional Methods**
